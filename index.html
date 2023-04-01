@@ -87,15 +87,8 @@
           <h2 class="text-3xl font-bold mb-4">เมนู</h2>
           <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <div class="menu-item">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Latte_art_3.jpg" alt="Menu Item 1" class="w-full h-64 object-cover rounded">
-              <h3 class="font-bold text-xl mt-2 mb-1">Latte</h3>
-              <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, similique.</p>
-              <div class="text-right mt-4">
-                <span class="font-bold text-xl text-teal-600">฿69</span>
-              </div>
-            </div>
+        <div id="menu-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            
             <div class="menu-item">
               <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Cappuccino_at_Sightglass_Coffee.jpg" alt="Menu Item 2" class="w-full h-64 object-cover rounded">
               <h3 class="font-bold text-xl mt-2 mb-1">Cappuccino</h3>
@@ -115,7 +108,7 @@
             <div class="menu-item">
               <img src="https://images.immediate.co.uk/production/volatile/sites/2/2021/11/Mocha-1fc71f7.png?quality=90&resize=556,505" alt="Menu Item 4" class="w-full h-64 object-cover rounded">
               <h3 class="font-bold text-xl mt-2 mb-1">Mocha</h3>
-              <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, similique.</p>
+              <p class="text-gray-600"></p>
               <div class="text-right mt-4">
                 <span class="font-bold text-xl text-teal-600">฿69</span>
               </div>
@@ -176,7 +169,22 @@
             </div>
         </div>
         </div>
-    </section>       
+    <!--นับยอด-->
+    </section class="py-16 px-5 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h3 class="mt-16 text-3xl font-bold text-center">จำนวนการเข้าชม</h3>
+        <p id="cview" class="mt-8 text-3xl font-bold text-center">0</p>
+        <p class="mt-8 mb-16  text-3xl font-bold text-center">ครั้ง</p>
+        <script>
+          let data = $.getJSON("https://script.google.com/macros/s/AKfycbxEWKoIsytGGgn3Rcv6OtCSyWEZa-_u2slUzVRJsaF1mualvBEUghes-ZdAmD8XmhDK/exec?duty=api&type=cview")
+          data.done(
+            ()=>{$("#cview").text(data.responseJSON["viewed"])}
+          )
+        </script>
+      </div>
+    <section>
+
+    </section>
     <script>
         // หาelement
         const heroSection = document.querySelector('#hero');
@@ -186,7 +194,6 @@
         // เมื่อเลื่อนหน้าจอให้เปลี่ยนค่าความสูง
         window.addEventListener('scroll', () => {
         let offset = window.pageYOffset;
-        console.log(offset)
         if(offset>50){
             header.addClass("bg-gray-800")
             header.addClass("text-gray-200")
@@ -204,5 +211,28 @@
         heroSection.style.height = `${windowHeight - offset}px`;
         });
 
+        //สร้างกล่องเมนู
+        const menu = [
+          {
+            "image":"https://upload.wikimedia.org/wikipedia/commons/c/c6/Latte_art_3.jpg",
+            "title":"Latte",
+            "price":"69",
+            "desc":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, similique."
+          }
+        ]
+        const menuList = $("#menu-list")
+        
+        for(let i=0;i<menu.length;i++){
+          menuList.append(`
+          <div class="menu-item">
+            <img src="${menu[i]["image"]}" alt="Menu Item 1" class="w-full h-64 object-cover rounded">
+            <h3 class="font-bold text-xl mt-2 mb-1">${menu[i]["title"]}</h3>
+            <p class="text-gray-600">${menu[i]["desc"]}</p>
+            <div class="text-right mt-4">
+              <span class="font-bold text-xl text-teal-600">฿${menu[i]["price"]}</span>
+            </div>
+          </div>
+          `)
+        }
     </script>
 </body>        
