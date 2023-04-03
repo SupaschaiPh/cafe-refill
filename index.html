@@ -191,15 +191,15 @@
         const menu = $.getJSON("https://script.google.com/macros/s/AKfycbxEWKoIsytGGgn3Rcv6OtCSyWEZa-_u2slUzVRJsaF1mualvBEUghes-ZdAmD8XmhDK/exec?duty=api&type=menu")
         const menuList = $("#menu-list")
         menu.done(()=>{
-         menu = menu.responseJSON;
-        for(let i=0;i<menu.length;i++){
+         menu2 = menu.responseJSON;
+        for(let i=0;i<menu2.length;i++){
           menuList.append(`
           <div class="menu-item">
-            <img src="${menu[i][1]}" alt="Menu Item 1" class="w-full h-64 object-cover rounded">
-            <h3 class="font-bold text-xl mt-2 mb-1">${menu[i][0]}</h3>
-            <p class="text-gray-600">${menu[i][2]}</p>
+            <img src="${menu2[i][1]}" alt="Menu Item 1" class="w-full h-64 object-cover rounded">
+            <h3 class="font-bold text-xl mt-2 mb-1">${menu2[i][0]}</h3>
+            <p class="text-gray-600">${menu2[i][2]}</p>
             <div class="text-right mt-4">
-              <span class="font-bold text-xl text-teal-600">฿${menu[i][3]}</span>
+              <span class="font-bold text-xl text-teal-600">฿${menu2[i][3]}</span>
             </div>
           </div>
           `)
