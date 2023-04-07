@@ -155,8 +155,7 @@
         <script>
           let data = $.getJSON("https://script.google.com/macros/s/AKfycbxEWKoIsytGGgn3Rcv6OtCSyWEZa-_u2slUzVRJsaF1mualvBEUghes-ZdAmD8XmhDK/exec?duty=api&type=cview")
           data.done(
-            console.info("นำเข้ายอดการชมแล้ว")
-            ()=>{$("#cview").text(data.responseJSON["viewed"])}
+            ()=>{console.info("นำเข้ายอดการชมแล้ว");$("#cview").text(data.responseJSON["viewed"])}
           )
         </script>
       </div>
