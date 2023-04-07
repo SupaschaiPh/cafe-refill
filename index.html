@@ -192,6 +192,7 @@
         const menu = $.getJSON("https://script.google.com/macros/s/AKfycbxEWKoIsytGGgn3Rcv6OtCSyWEZa-_u2slUzVRJsaF1mualvBEUghes-ZdAmD8XmhDK/exec?duty=api&type=menu")
         const menuList = $("#menu-list")
         menu.done(()=>{
+          console.)
          menu2 = menu.responseJSON;
         for(let i=0;i<menu2.length;i++){
           menuList.append(`
@@ -205,5 +206,6 @@
           </div>
           `)
         }})
+        console.clear()
     </script>
 </body>        
